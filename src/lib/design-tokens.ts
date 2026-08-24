@@ -5,7 +5,7 @@ export const tokens = {
     accent: { primary: '#3B82F6', success: '#22C55E', warning: '#F59E0B', danger: '#EF4444' },
     finish: { chrome: '#E5E7EB', matteBlack: '#1F2937', silver: '#CBD5E1' },
   },
-  fonts: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+  fonts: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
   radius: { sm: '0.375rem', md: '0.5rem', lg: '1rem' },
 } as const;
 export type Tokens = typeof tokens;
