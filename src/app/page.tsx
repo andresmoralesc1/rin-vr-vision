@@ -1,7 +1,19 @@
+import { Header } from '@/components/landing/Header';
+import { Hero } from '@/components/landing/Hero';
+import { Features } from '@/components/landing/Features';
+import { Gallery } from '@/components/landing/Gallery';
+import { Footer } from '@/components/landing/Footer';
+
 export default function LandingPage() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className="text-4xl font-bold">Rin VR Vision</h1>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Features />
+        <Gallery />
+      </main>
+      <Footer />
+    </>
   );
 }
