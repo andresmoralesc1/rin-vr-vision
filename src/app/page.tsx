@@ -5,7 +5,10 @@ import { Gallery } from '@/components/landing/Gallery';
 import { Footer } from '@/components/landing/Footer';
 import { searchWheels } from '@/lib/pexels/client';
 
-export const revalidate = 3600;
+// PEXELS_API_KEY is runtime-only (injected via docker env_file, not baked
+// into the image), so the page must render at request time — ISR would
+// cache the build-time prerender (which lacks the key) for an hour.
+export const dynamic = 'force-dynamic';
 
 export default async function LandingPage() {
   let photos = undefined;
