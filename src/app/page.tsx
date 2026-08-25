@@ -1,8 +1,6 @@
-import { Header } from '@/components/landing/Header';
 import { Hero } from '@/components/landing/Hero';
 import { Features } from '@/components/landing/Features';
 import { Gallery } from '@/components/landing/Gallery';
-import { Footer } from '@/components/landing/Footer';
 import { searchWheels } from '@/lib/pexels/client';
 
 // PEXELS_API_KEY is runtime-only (injected via docker env_file, not baked
@@ -19,13 +17,9 @@ export default async function LandingPage() {
   }
   return (
     <>
-      <Header />
-      <main>
-        <Hero backdrop={photos?.[0]} />
-        <Features />
-        <Gallery photos={photos?.slice(1)} />
-      </main>
-      <Footer />
+      <Hero backdrop={photos?.[0]} />
+      <Features />
+      <Gallery photos={photos?.slice(1)} />
     </>
   );
 }
