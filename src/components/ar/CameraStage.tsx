@@ -2,17 +2,18 @@
 import { useCamera } from '@/lib/camera/useCamera';
 import { isHttpsContext } from '@/lib/camera/permissionStates';
 import { useCalibration } from '@/lib/calibration/context';
+import { CalibrationDrawer } from '@/components/ar/CalibrationDrawer';
 
 export function CameraStage({ children }: { children?: React.ReactNode }) {
   const { status, stream, error, request } = useCamera();
   const { calibration } = useCalibration();
 
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden bg-black">
       {!isHttpsContext() && (
-        <div className="sticky top-0 z-50 bg-accent-warning text-black text-sm px-4 py-2 text-center">
+        <div className="bg-accent-warning sticky top-0 z-50 px-4 py-2 text-center text-sm text-black">
           Cámara requiere HTTPS. Abrí:{' '}
-          <a href="https://rin.andresmorales.com.co/app" className="underline font-semibold">
+          <a href="https://rin.andresmorales.com.co/app" className="font-semibold underline">
             rin.andresmorales.com.co/app
           </a>
         </div>
@@ -23,13 +24,13 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
           autoPlay
           playsInline
           muted
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 size-full object-cover"
         />
       )}
 
       {status === 'idle' && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <button onClick={request} className="bg-accent-primary px-6 py-3 rounded-md font-semibold">
+          <button onClick={request} className="rounded-md bg-accent-primary px-6 py-3 font-semibold">
             Iniciar cámara
           </button>
         </div>
@@ -44,9 +45,9 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
       {status === 'denied' && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 text-center">
           <p className="text-text-primary">Permiso de cámara denegado.</p>
-          <p className="text-text-muted text-sm">Reactivá el permiso en los ajustes del navegador y reintentá.</p>
-          {error && <p className="text-xs text-accent-danger">{error.message}</p>}
-          <button onClick={request} className="bg-accent-primary px-6 py-3 rounded-md font-semibold">
+          <p className="text-sm text-text-muted">Reactivá el permiso en los ajustes del navegador y reintentá.</p>
+          {error && <p className="text-accent-danger text-xs">{error.message}</p>}
+          <button onClick={request} className="rounded-md bg-accent-primary px-6 py-3 font-semibold">
             Reintentar
           </button>
         </div>
@@ -61,7 +62,8 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
       {status === 'granted' && (
         <>
           {children}
-          <div className="absolute bottom-4 left-4 right-4 bg-bg-surface/80 backdrop-blur p-2 rounded text-xs">
+          <CalibrationDrawer />
+          <div className="absolute inset-x-4 bottom-4 rounded bg-bg-surface/80 p-2 text-xs backdrop-blur">
             pos: ({calibration.x.toFixed(2)}, {calibration.y.toFixed(2)}) · scale: {calibration.scale.toFixed(2)} · finish: {calibration.finish}
           </div>
         </>
