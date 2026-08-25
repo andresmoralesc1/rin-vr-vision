@@ -2,13 +2,15 @@
 import { useCalibration } from '@/lib/calibration/context';
 import { CATALOG } from '@/lib/rims/catalog';
 
+/**
+ * Renders one button per catalog entry. Sits inside the bottom-sheet
+ * wrapper in CameraStage — positioning is owned by the parent so we
+ * don't fight for the same z-stack as the rest of the chrome.
+ */
 export function RimPicker() {
   const { calibration, dispatch } = useCalibration();
   return (
-    <div
-      className="absolute bottom-32 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full border border-white/10 bg-bg-surface/90 p-2 backdrop-blur"
-      aria-label="Elegir rin"
-    >
+    <div className="flex flex-wrap justify-center gap-2" aria-label="Elegir rin">
       {CATALOG.map((r) => {
         const active = calibration.modelId === r.id;
         return (

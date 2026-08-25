@@ -8,17 +8,23 @@ const FINISHES: { key: Finish; label: string; color: string }[] = [
   { key: 'silver', label: 'Plata', color: 'bg-gray-400' },
 ];
 
+/**
+ * Render selector for the 3 PBR finishes. Sits inside the bottom-sheet
+ * wrapper in CameraStage — positioning is owned by the parent.
+ */
 export function RimCarousel() {
   const { calibration, dispatch } = useCalibration();
   return (
-    <div className="absolute bottom-20 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full border border-white/10 bg-bg-surface/90 p-2 backdrop-blur">
+    <div className="flex justify-center gap-2" role="radiogroup" aria-label="Acabado">
       {FINISHES.map((f) => (
         <button
           key={f.key}
           onClick={() => dispatch({ type: 'finish', value: f.key })}
           aria-label={f.label}
           aria-pressed={calibration.finish === f.key}
-          className={`size-10 rounded-full ${f.color} ${calibration.finish === f.key ? 'ring-2 ring-accent-primary' : ''}`}
+          className={`size-10 rounded-full ${f.color} ${
+            calibration.finish === f.key ? 'ring-2 ring-accent-primary' : ''
+          }`}
         />
       ))}
     </div>

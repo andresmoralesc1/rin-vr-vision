@@ -5,7 +5,7 @@ import { useCalibration } from '@/lib/calibration/context';
 type Point = { x: number; y: number };
 
 export function GestureCanvas() {
-  const { dispatch } = useCalibration();
+  const { calibration, dispatch } = useCalibration();
   const last = useRef<Point | null>(null);
   const lastDist = useRef<number | null>(null);
   const lastAngle = useRef<number | null>(null);
@@ -18,6 +18,9 @@ export function GestureCanvas() {
   const onMove = useCallback(
     (e: React.PointerEvent) => {
       if (!last.current) return;
+      // While a 2-finger pinch is in progress, defer to TouchEvent
+      // handling. Drag resumes automatically once either finger lifts
+      // (see `onUp` clearing `lastDist`).
       if (e.pointerType === 'touch' && lastDist.current !== null) {
         return;
       }
@@ -25,13 +28,20 @@ export function GestureCanvas() {
       const dy = (e.clientY - last.current.y) / window.innerHeight;
       dispatch({ type: 'set', field: 'x', value: dx * 2 });
       dispatch({ type: 'set', field: 'y', value: -dy * 2 });
-      last.current = { x: e.clientX, y: e.clientY };
+      const px = e.clientX, py = e.clientY;
+      last.current = { x: px, y: py };
     },
     [dispatch],
   );
 
+  // Clear `lastDist`/`lastAngle` in PointerUp too (in addition to
+  // TouchEnd): after a 2-finger gesture, lifting one finger would
+  // otherwise leave `lastDist` set, blocking the 1-finger drag of the
+  // remaining finger until the second finger lifts.
   const onUp = useCallback(() => {
     last.current = null;
+    lastDist.current = null;
+    lastAngle.current = null;
   }, []);
 
   const onWheel = useCallback(
@@ -53,10 +63,16 @@ export function GestureCanvas() {
       const b = e.touches[1];
       if (!a || !b) return;
       const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-      const angle = (Math.atan2(b.clientY - a.clientY, b.clientX - a.clientX) * 180) / Math.PI;
+      const angle =
+        (Math.atan2(b.clientY - a.clientY, b.clientX - a.clientX) * 180) / Math.PI;
       if (lastDist.current !== null) {
+        // Pinch accumulates: each frame multiplies the current scale by
+        // this frame's ratio instead of replacing it (read from the
+        // latest reducer state so the chain compounds across frames).
+        // Capped at [0.2, 2] to match the slider's range.
         const ratio = dist / lastDist.current;
-        dispatch({ type: 'set', field: 'scale', value: Math.max(0.2, Math.min(2, ratio)) });
+        const next = Math.max(0.2, Math.min(2, calibration.scale * ratio));
+        dispatch({ type: 'set', field: 'scale', value: next });
       }
       if (lastAngle.current !== null) {
         const delta = angle - lastAngle.current;
@@ -65,7 +81,7 @@ export function GestureCanvas() {
       lastDist.current = dist;
       lastAngle.current = angle;
     },
-    [dispatch],
+    [dispatch, calibration.scale],
   );
 
   const onTouchEnd = useCallback(() => {

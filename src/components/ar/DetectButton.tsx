@@ -33,7 +33,7 @@ export function DetectButton({ videoRef }: Props) {
           <line x1="2" y1="12" x2="5" y2="12" />
           <line x1="19" y1="12" x2="22" y2="12" />
         </svg>
-        {active ? 'Deteniendo…' : 'Auto'}
+        {active ? 'Detectando…' : 'Auto'}
       </button>
       {active && (
         <WheelDetectorPanel
