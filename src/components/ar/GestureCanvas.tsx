@@ -28,8 +28,7 @@ export function GestureCanvas() {
       const dy = (e.clientY - last.current.y) / window.innerHeight;
       dispatch({ type: 'set', field: 'x', value: dx * 2 });
       dispatch({ type: 'set', field: 'y', value: -dy * 2 });
-      const px = e.clientX, py = e.clientY;
-      last.current = { x: px, y: py };
+      last.current = { x: e.clientX, y: e.clientY };
     },
     [dispatch],
   );
