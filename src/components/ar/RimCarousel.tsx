@@ -11,7 +11,7 @@ const FINISHES: { key: Finish; label: string; color: string }[] = [
 export function RimCarousel() {
   const { calibration, dispatch } = useCalibration();
   return (
-    <div className="absolute bottom-20 left-1/2 flex -translate-x-1/2 gap-2 rounded-full border border-white/10 bg-bg-surface/90 p-2 backdrop-blur">
+    <div className="absolute bottom-20 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full border border-white/10 bg-bg-surface/90 p-2 backdrop-blur">
       {FINISHES.map((f) => (
         <button
           key={f.key}

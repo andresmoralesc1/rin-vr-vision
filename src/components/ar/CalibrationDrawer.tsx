@@ -14,7 +14,7 @@ const FIELDS = [
 export function CalibrationDrawer() {
   const { calibration, dispatch } = useCalibration();
   return (
-    <div className="absolute right-4 top-4 w-72 space-y-3 rounded-lg border border-white/10 bg-bg-surface/90 p-4 backdrop-blur">
+    <div className="absolute right-4 top-4 z-20 w-72 space-y-3 rounded-lg border border-white/10 bg-bg-surface/90 p-4 backdrop-blur">
       {FIELDS.map((f) => (
         <Slider
           key={f.key}
