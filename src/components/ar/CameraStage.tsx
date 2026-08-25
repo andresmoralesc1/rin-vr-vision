@@ -3,6 +3,7 @@ import { useCamera } from '@/lib/camera/useCamera';
 import { isHttpsContext } from '@/lib/camera/permissionStates';
 import { useCalibration } from '@/lib/calibration/context';
 import { CalibrationDrawer } from '@/components/ar/CalibrationDrawer';
+import { RimCarousel } from '@/components/ar/RimCarousel';
 
 export function CameraStage({ children }: { children?: React.ReactNode }) {
   const { status, stream, error, request } = useCamera();
@@ -63,6 +64,7 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
         <>
           {children}
           <CalibrationDrawer />
+          <RimCarousel />
           <div className="absolute inset-x-4 bottom-4 rounded bg-bg-surface/80 p-2 text-xs backdrop-blur">
             pos: ({calibration.x.toFixed(2)}, {calibration.y.toFixed(2)}) · scale: {calibration.scale.toFixed(2)} · finish: {calibration.finish}
           </div>
