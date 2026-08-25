@@ -3,6 +3,7 @@ import { useCamera } from '@/lib/camera/useCamera';
 import { isHttpsContext } from '@/lib/camera/permissionStates';
 import { useCalibration } from '@/lib/calibration/context';
 import { CalibrationDrawer } from '@/components/ar/CalibrationDrawer';
+import { GestureCanvas } from '@/components/ar/GestureCanvas';
 import { RimCarousel } from '@/components/ar/RimCarousel';
 
 export function CameraStage({ children }: { children?: React.ReactNode }) {
@@ -62,6 +63,7 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
 
       {status === 'granted' && (
         <>
+          <GestureCanvas />
           {children}
           <CalibrationDrawer />
           <RimCarousel />
