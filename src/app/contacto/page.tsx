@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { MarketingLayout } from '@/components/landing/MarketingLayout';
 import { ContactForm } from './ContactForm';
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ const CHANNELS = [
 
 export default function ContactoPage() {
   return (
-    <>
+    <MarketingLayout>
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-b from-bg-surface to-bg-primary" />
         <div className="relative mx-auto max-w-6xl px-4 py-20 text-center">
@@ -112,6 +113,6 @@ export default function ContactoPage() {
           </aside>
         </div>
       </section>
-    </>
+    </MarketingLayout>
   );
 }

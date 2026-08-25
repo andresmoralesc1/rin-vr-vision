@@ -1,17 +1,17 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useCamera } from '@/lib/camera/useCamera';
 import { isHttpsContext } from '@/lib/camera/permissionStates';
-import { useCalibration } from '@/lib/calibration/context';
 import { CalibrationDrawer } from '@/components/ar/CalibrationDrawer';
-import { DetectButton } from '@/components/ar/DetectButton';
 import { GestureCanvas } from '@/components/ar/GestureCanvas';
+import { GestureHints } from '@/components/ar/GestureHints';
 import { RimCarousel } from '@/components/ar/RimCarousel';
 import { RimPicker } from '@/components/ar/RimPicker';
+import { TopBar } from '@/components/ar/TopBar';
 
 export function CameraStage({ children }: { children?: React.ReactNode }) {
   const { status, stream, error, request } = useCamera();
-  const { calibration } = useCalibration();
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   return (
@@ -70,15 +70,26 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
 
       {status === 'granted' && (
         <>
+          {/* Gesture layer sits above the video but below all UI controls. */}
           <GestureCanvas />
           {children}
-          <CalibrationDrawer />
-          <DetectButton videoRef={videoRef} />
-          <RimPicker />
-          <RimCarousel />
-          <div className="absolute inset-x-4 bottom-4 rounded bg-bg-surface/80 p-2 text-xs backdrop-blur">
-            pos: ({calibration.x.toFixed(2)}, {calibration.y.toFixed(2)}) · scale: {calibration.scale.toFixed(2)} · finish: {calibration.finish} · model: {calibration.modelId}
+
+          <TopBar videoRef={videoRef} onSettingsClick={() => setSettingsOpen(true)} />
+
+          {/* Bottom sheet — model + finish in one rounded panel. */}
+          <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 mx-auto flex max-w-md flex-col items-stretch gap-2 rounded-2xl border border-white/10 bg-bg-surface/90 p-2 shadow-2xl backdrop-blur">
+            <div className="pointer-events-auto">
+              <RimPicker />
+            </div>
+            <div className="mx-2 h-px bg-white/10" aria-hidden="true" />
+            <div className="pointer-events-auto">
+              <RimCarousel />
+            </div>
           </div>
+
+          <GestureHints />
+
+          <CalibrationDrawer open={settingsOpen} onClose={() => setSettingsOpen(false)} />
         </>
       )}
     </div>

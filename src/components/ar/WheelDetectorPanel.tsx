@@ -4,7 +4,7 @@ import { useWheelDetector } from '@/lib/detect/useWheelDetector';
 import { useCalibration } from '@/lib/calibration/context';
 
 type Props = {
-  videoRef: RefObject<HTMLVideoElement>;
+  videoRef: RefObject<HTMLVideoElement | null>;
   /** Called when the first accepted anchor has been dispatched. */
   onAccepted?: () => void;
 };

@@ -9,22 +9,31 @@ const WheelDetectorPanel = dynamic(() => import('./WheelDetectorPanel'), {
   loading: () => null,
 });
 
-type Props = { videoRef: RefObject<HTMLVideoElement> };
+type Props = { videoRef: RefObject<HTMLVideoElement | null> };
 
 export function DetectButton({ videoRef }: Props) {
   const [active, setActive] = useState(false);
   return (
-    <div className="absolute bottom-44 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full border border-white/10 bg-bg-surface/90 p-2 backdrop-blur">
+    <>
       <button
         onClick={() => setActive((a) => !a)}
         aria-pressed={active}
-        className={`min-w-32 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
+        aria-label="Detectar rueda automáticamente"
+        className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
           active
             ? 'bg-accent-warning text-black'
-            : 'bg-accent-primary text-white hover:bg-blue-500'
+            : 'bg-white/10 text-text-primary hover:bg-white/20'
         }`}
       >
-        {active ? 'Deteniendo…' : 'Detectar automáticamente'}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="4" />
+          <line x1="12" y1="2" x2="12" y2="5" />
+          <line x1="12" y1="19" x2="12" y2="22" />
+          <line x1="2" y1="12" x2="5" y2="12" />
+          <line x1="19" y1="12" x2="22" y2="12" />
+        </svg>
+        {active ? 'Deteniendo…' : 'Auto'}
       </button>
       {active && (
         <WheelDetectorPanel
@@ -32,6 +41,6 @@ export function DetectButton({ videoRef }: Props) {
           onAccepted={() => setActive(false)}
         />
       )}
-    </div>
+    </>
   );
 }

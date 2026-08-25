@@ -1,6 +1,7 @@
 import { Hero } from '@/components/landing/Hero';
 import { Features } from '@/components/landing/Features';
 import { Gallery } from '@/components/landing/Gallery';
+import { MarketingLayout } from '@/components/landing/MarketingLayout';
 import { searchWheels } from '@/lib/pexels/client';
 
 // PEXELS_API_KEY is runtime-only (injected via docker env_file, not baked
@@ -16,10 +17,10 @@ export default async function LandingPage() {
     console.warn('Pexels fetch failed:', err);
   }
   return (
-    <>
+    <MarketingLayout>
       <Hero backdrop={photos?.[0]} />
       <Features />
       <Gallery photos={photos?.slice(1)} />
-    </>
+    </MarketingLayout>
   );
 }

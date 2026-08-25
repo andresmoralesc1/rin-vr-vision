@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { MarketingLayout } from '@/components/landing/MarketingLayout';
 
 export const metadata: Metadata = {
   title: 'Nosotros · Rin VR Vision',
@@ -46,7 +47,7 @@ const STATS = [
 
 export default function NosotrosPage() {
   return (
-    <>
+    <MarketingLayout>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-br from-bg-surface via-bg-primary to-bg-surface" />
@@ -141,6 +142,6 @@ export default function NosotrosPage() {
           </svg>
         </a>
       </section>
-    </>
+    </MarketingLayout>
   );
 }

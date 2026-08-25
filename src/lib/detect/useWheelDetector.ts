@@ -31,7 +31,7 @@ type Options = {
  *   - `stop()` halts the loop and disposes the detector.
  *   - The hook disposes on unmount even if `stop()` wasn't called.
  */
-export function useWheelDetector(videoRef: RefObject<HTMLVideoElement>, options: Options = {}) {
+export function useWheelDetector(videoRef: RefObject<HTMLVideoElement | null>, options: Options = {}) {
   const intervalMs = options.intervalMs ?? 200;
   const minConfidence = options.minConfidence ?? 0.4;
 
