@@ -2,7 +2,7 @@
 import { useCamera } from '@/lib/camera/useCamera';
 import { useCalibration } from '@/lib/calibration/context';
 
-export function CameraStage() {
+export function CameraStage({ children }: { children?: React.ReactNode }) {
   const { status, stream, error, request } = useCamera();
   const { calibration } = useCalibration();
 
@@ -50,9 +50,12 @@ export function CameraStage() {
       )}
 
       {status === 'granted' && (
-        <div className="absolute bottom-4 left-4 right-4 bg-bg-surface/80 backdrop-blur p-2 rounded text-xs">
-          pos: ({calibration.x.toFixed(2)}, {calibration.y.toFixed(2)}) · scale: {calibration.scale.toFixed(2)} · finish: {calibration.finish}
-        </div>
+        <>
+          {children}
+          <div className="absolute bottom-4 left-4 right-4 bg-bg-surface/80 backdrop-blur p-2 rounded text-xs">
+            pos: ({calibration.x.toFixed(2)}, {calibration.y.toFixed(2)}) · scale: {calibration.scale.toFixed(2)} · finish: {calibration.finish}
+          </div>
+        </>
       )}
     </div>
   );
