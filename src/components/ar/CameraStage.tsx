@@ -1,5 +1,6 @@
 'use client';
 import { useCamera } from '@/lib/camera/useCamera';
+import { isHttpsContext } from '@/lib/camera/permissionStates';
 import { useCalibration } from '@/lib/calibration/context';
 
 export function CameraStage({ children }: { children?: React.ReactNode }) {
@@ -8,6 +9,14 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden">
+      {!isHttpsContext() && (
+        <div className="sticky top-0 z-50 bg-accent-warning text-black text-sm px-4 py-2 text-center">
+          Cámara requiere HTTPS. Abrí:{' '}
+          <a href="https://rin.andresmorales.com.co/app" className="underline font-semibold">
+            rin.andresmorales.com.co/app
+          </a>
+        </div>
+      )}
       {stream && (
         <video
           ref={(el) => { if (el && stream) el.srcObject = stream; }}
