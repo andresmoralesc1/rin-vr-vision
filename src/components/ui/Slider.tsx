@@ -24,7 +24,7 @@ export function Slider({ label, value, min, max, step, onChange, inputRef }: Pro
         aria-label={label}
         className="w-full accent-accent-primary"
       />
-      <span className="text-xs">{value.toFixed(2)}</span>
+      <span className="text-xs">{value.toFixed(step >= 1 ? 0 : 2)}</span>
     </label>
   );
 }
