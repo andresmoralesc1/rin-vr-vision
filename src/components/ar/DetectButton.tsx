@@ -38,7 +38,7 @@ export function DetectButton({ videoRef }: Props) {
       {active && (
         <WheelDetectorPanel
           videoRef={videoRef}
-          onAccepted={() => setActive(false)}
+          onDone={() => setActive(false)}
         />
       )}
     </>
