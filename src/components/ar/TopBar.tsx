@@ -1,6 +1,6 @@
 'use client';
-import Link from 'next/link';
 import type { RefObject } from 'react';
+import { BackButton } from './BackButton';
 import { DetectButton } from './DetectButton';
 
 type Props = {
@@ -19,16 +19,7 @@ type Props = {
 export function TopBar({ videoRef, onSettingsClick, settingsOpen }: Props) {
   return (
     <div className="absolute inset-x-0 top-0 z-30 flex items-center justify-between gap-2 px-3 pt-3">
-      <Link
-        href="/"
-        aria-label="Volver al inicio"
-        className="inline-flex items-center justify-center rounded-full bg-black/40 p-2 text-text-primary backdrop-blur transition-colors hover:bg-black/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <line x1="19" y1="12" x2="5" y2="12" />
-          <polyline points="12 19 5 12 12 5" />
-        </svg>
-      </Link>
+      <BackButton />
 
       <DetectButton videoRef={videoRef} />
 
