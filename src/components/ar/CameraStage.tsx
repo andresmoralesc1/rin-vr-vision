@@ -55,10 +55,13 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
       )}
 
       {status === 'idle' && (
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
           <button onClick={request} className="rounded-md bg-accent-primary px-6 py-3 font-semibold">
             Iniciar cámara
           </button>
+          <p className="max-w-xs text-xs text-text-muted">
+            Tu cámara se procesa en el dispositivo. No se sube nada a ningún servidor.
+          </p>
         </div>
       )}
 
