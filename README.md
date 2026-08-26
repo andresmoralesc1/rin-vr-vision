@@ -29,6 +29,7 @@ WebAR rim visualizer — point your phone camera at your wheel, pick a rim from 
 | Styling | Tailwind CSS (custom design tokens in `src/lib/design-tokens.ts`) |
 | Testing | Vitest + Testing Library + jsdom |
 | Photos | Pexels API (server-side fetch with 1 h ISR) |
+| SEO/PWA | Next.js file conventions (opengraph-image, icon, robots, sitemap, manifest) + next/og dynamic OG |
 | Deploy | Docker (multi-stage, `node:24-alpine`, standalone output, 186 MB image) |
 | Reverse proxy | Host Caddy terminates TLS, ACME HTTP-01 |
 | DNS | Namecheap API (A record only) |

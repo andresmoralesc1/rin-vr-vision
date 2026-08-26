@@ -27,7 +27,7 @@ export function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-text-primary transition-opacity hover:opacity-80"
+          className="flex items-center gap-2 rounded text-text-primary transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
           onClick={() => setOpen(false)}
         >
           <Logo size={28} className="text-accent-primary" />
@@ -41,7 +41,7 @@ export function Header() {
               <Link
                 href={item.href}
                 aria-current={isActive(item.href) ? 'page' : undefined}
-                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
                   isActive(item.href)
                     ? 'text-text-primary'
                     : 'text-text-muted hover:text-text-primary'
@@ -110,7 +110,7 @@ export function Header() {
                   href={item.href}
                   onClick={() => setOpen(false)}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`block rounded-md px-3 py-3 text-base font-medium transition-colors ${
+                  className={`block rounded-md px-3 py-3 text-base font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
                     isActive(item.href)
                       ? 'bg-white/5 text-text-primary'
                       : 'text-text-muted hover:bg-white/5 hover:text-text-primary'
@@ -124,7 +124,7 @@ export function Header() {
               <Link
                 href="/app"
                 onClick={() => setOpen(false)}
-                className="block rounded-md bg-accent-primary px-4 py-3 text-center text-base font-semibold text-white shadow-sm"
+                className="block rounded-md bg-accent-primary px-4 py-3 text-center text-base font-semibold text-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
               >
                 Probar AR
               </Link>
