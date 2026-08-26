@@ -20,12 +20,19 @@ export function RimCarousel() {
         <button
           key={f.key}
           onClick={() => dispatch({ type: 'finish', value: f.key })}
-          aria-label={f.label}
           aria-pressed={calibration.finish === f.key}
-          className={`size-10 rounded-full ${f.color} ${
-            calibration.finish === f.key ? 'ring-2 ring-accent-primary' : ''
-          }`}
-        />
+          className="flex flex-col items-center gap-1.5 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+        >
+          <span
+            aria-hidden="true"
+            className={`size-10 rounded-full ${f.color} ${
+              calibration.finish === f.key ? 'ring-2 ring-accent-primary' : ''
+            }`}
+          />
+          <span className="text-[10px] uppercase tracking-wider text-text-muted">
+            {f.label}
+          </span>
+        </button>
       ))}
     </div>
   );
