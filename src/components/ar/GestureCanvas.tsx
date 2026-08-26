@@ -91,6 +91,8 @@ export function GestureCanvas() {
   return (
     <div
       className="absolute inset-0 z-10 touch-none"
+      aria-hidden="true"
+      tabIndex={-1}
       onPointerDown={onDown}
       onPointerMove={onMove}
       onPointerUp={onUp}

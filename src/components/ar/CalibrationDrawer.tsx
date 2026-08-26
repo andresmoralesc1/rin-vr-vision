@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useRef } from 'react';
 import { Slider } from '@/components/ui/Slider';
 import { useCalibration } from '@/lib/calibration/context';
 
@@ -15,6 +16,12 @@ type Props = { open: boolean; onClose: () => void };
 
 export function CalibrationDrawer({ open, onClose }: Props) {
   const { calibration, dispatch } = useCalibration();
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (open) firstFieldRef.current?.focus();
+  }, [open]);
+
   return (
     <>
       {/* Backdrop — dismiss the sheet on tap */}
@@ -41,7 +48,7 @@ export function CalibrationDrawer({ open, onClose }: Props) {
           Calibración fina
         </h2>
         <div className="space-y-3">
-          {FIELDS.map((f) => (
+          {FIELDS.map((f, i) => (
             <Slider
               key={f.key}
               label={f.label}
@@ -50,6 +57,7 @@ export function CalibrationDrawer({ open, onClose }: Props) {
               max={f.max}
               step={f.step}
               onChange={(v) => dispatch({ type: 'set', field: f.key, value: v })}
+              {...(i === 0 ? { inputRef: firstFieldRef } : {})}
             />
           ))}
         </div>

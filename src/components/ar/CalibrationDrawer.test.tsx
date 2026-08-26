@@ -66,4 +66,15 @@ describe('CalibrationDrawer', () => {
     fireEvent.click(getByLabelText('Cerrar ajustes'));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
+
+  it('focuses the first slider (X) when opened', () => {
+    const { getByLabelText } = renderDrawer({ open: true });
+    expect(getByLabelText('X')).toHaveFocus();
+  });
+
+  it('does not steal focus when closed', () => {
+    renderDrawer({ open: false });
+    // No input should be focused; jsdom leaves focus on body by default.
+    expect(document.activeElement?.tagName).not.toBe('INPUT');
+  });
 });

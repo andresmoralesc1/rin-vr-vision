@@ -15,3 +15,11 @@ html, body {
   color: var(--text-primary);
   font-family: var(--font-sans);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-transform,
+  .transition-opacity,
+  .transition-colors {
+    transition-duration: 0ms !important;
+  }
+}

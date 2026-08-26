@@ -74,7 +74,7 @@ export function CameraStage({ children }: { children?: React.ReactNode }) {
           <GestureCanvas />
           {children}
 
-          <TopBar videoRef={videoRef} onSettingsClick={() => setSettingsOpen(true)} />
+          <TopBar videoRef={videoRef} settingsOpen={settingsOpen} onSettingsClick={() => setSettingsOpen(true)} />
 
           {/* Bottom sheet — model + finish in one rounded panel. */}
           <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 mx-auto flex max-w-md flex-col items-stretch gap-2 rounded-2xl border border-white/10 bg-bg-surface/90 p-2 shadow-2xl backdrop-blur">

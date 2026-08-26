@@ -1,4 +1,5 @@
 'use client';
+import type { Ref } from 'react';
 type Props = {
   label: string;
   value: number;
@@ -6,12 +7,14 @@ type Props = {
   max: number;
   step: number;
   onChange: (v: number) => void;
+  inputRef?: Ref<HTMLInputElement>;
 };
-export function Slider({ label, value, min, max, step, onChange }: Props) {
+export function Slider({ label, value, min, max, step, onChange, inputRef }: Props) {
   return (
     <label className="block">
       <span className="text-xs text-text-muted">{label}</span>
       <input
+        ref={inputRef}
         type="range"
         value={value}
         min={min}
