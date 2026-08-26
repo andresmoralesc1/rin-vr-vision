@@ -135,7 +135,7 @@ export default function NosotrosPage() {
           href="/app"
           className="inline-flex items-center gap-2 rounded-xl bg-accent-primary px-6 py-3 text-base font-semibold text-white shadow-lg shadow-accent-primary/30 transition-all hover:scale-[1.03] hover:bg-accent-primary hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
         >
-          Probar AR ahora
+          Probar AR
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />

@@ -5,7 +5,6 @@ const NAV = [
   { href: '/', label: 'Inicio' },
   { href: '/nosotros', label: 'Nosotros' },
   { href: '/contacto', label: 'Contacto' },
-  { href: '/app', label: 'Probar AR' },
 ];
 
 export function Footer() {
