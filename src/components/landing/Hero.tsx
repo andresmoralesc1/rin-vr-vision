@@ -36,7 +36,7 @@ export function Hero({ backdrop }: { backdrop?: PexelsPhoto }) {
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/app"
-            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-accent-primary px-7 py-4 text-base font-semibold text-white shadow-lg shadow-accent-primary/30 transition-all duration-200 hover:scale-[1.03] hover:bg-blue-500 hover:shadow-xl hover:shadow-accent-primary/40 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
+            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-accent-primary px-7 py-4 text-base font-semibold text-white shadow-lg shadow-accent-primary/30 transition-all duration-200 hover:scale-[1.03] hover:bg-accent-primary hover:shadow-xl hover:shadow-accent-primary/40 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
           >
             <span className="relative">Probar AR ahora</span>
             <svg

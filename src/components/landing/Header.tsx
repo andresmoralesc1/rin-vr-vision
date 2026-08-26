@@ -56,7 +56,7 @@ export function Header() {
         {/* Desktop CTA */}
         <Link
           href="/app"
-          className="hidden rounded-md bg-accent-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-500 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary md:inline-block"
+          className="hidden rounded-md bg-accent-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-primary hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary md:inline-block"
         >
           Probar AR
         </Link>

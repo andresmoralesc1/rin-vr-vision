@@ -74,7 +74,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="inline-flex items-center gap-2 rounded-md bg-accent-primary px-5 py-2.5 font-semibold text-white shadow-sm transition-all hover:bg-blue-500 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
+        className="inline-flex items-center gap-2 rounded-md bg-accent-primary px-5 py-2.5 font-semibold text-white shadow-sm transition-all hover:bg-accent-primary hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
       >
         Enviar mensaje
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

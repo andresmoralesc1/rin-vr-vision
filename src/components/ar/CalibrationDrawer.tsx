@@ -70,7 +70,7 @@ export function CalibrationDrawer({ open, onClose }: Props) {
           </button>
           <button
             onClick={onClose}
-            className="flex-1 rounded-lg bg-accent-primary py-2 text-sm font-semibold text-white hover:bg-blue-500"
+            className="flex-1 rounded-lg bg-accent-primary py-2 text-sm font-semibold text-white hover:bg-accent-primary"
           >
             Listo
           </button>

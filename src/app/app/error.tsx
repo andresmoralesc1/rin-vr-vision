@@ -44,7 +44,7 @@ export default function AppErrorBoundary({ error, reset }: Props) {
         <button
           type="button"
           onClick={reset}
-          className="rounded-md bg-accent-primary px-5 py-2 font-semibold text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+          className="rounded-md bg-accent-primary px-5 py-2 font-semibold text-white hover:bg-accent-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
         >
           Reintentar
         </button>
