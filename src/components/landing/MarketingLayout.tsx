@@ -11,7 +11,7 @@ export function MarketingLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main id="main" tabIndex={-1}>{children}</main>
       <Footer />
     </>
   );
