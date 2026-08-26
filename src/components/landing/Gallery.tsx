@@ -16,7 +16,7 @@ export function Gallery({ photos }: { photos?: PexelsPhoto[] }) {
                   sizes="33vw"
                   className="object-cover"
                 />
-                <span className="absolute bottom-1 right-1 rounded bg-black/60 px-1 text-xs">
+                <span className="absolute bottom-1 right-1 rounded-md bg-black/60 px-1 text-xs">
                   {p.photographer}
                 </span>
               </div>

@@ -10,6 +10,13 @@ export const tokens = {
 // variable (see tailwind.config.ts), so component-level typography
 // stays a single class.
 fonts: { sans: 'Manrope (next/font)' },
+  // Radius rule (apply across the app):
+  //   md   (0.5rem)   = buttons, inputs, nav items, small chips, badges
+  //   lg   (1rem)     = cards, finish swatches, drawer-pill selectors
+  //   xl   (0.75rem)  = hero CTA, big feature cards  (Tailwind default)
+  //   2xl  (1.5rem)   = inspector cards, bottom-sheet top edge  (Tailwind default)
+  //   full             = circular icon buttons, swatches — not a radius, a shape
+  // Avoid bare `rounded` (defaults to 0.25rem — neither md nor semantic).
   radius: { sm: '0.375rem', md: '0.5rem', lg: '1rem' },
 } as const;
 export type Tokens = typeof tokens;

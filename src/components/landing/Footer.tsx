@@ -14,7 +14,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2 rounded text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary">
+            <Link href="/" className="inline-flex items-center gap-2 rounded-md text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary">
               <Logo size={24} className="text-accent-primary" />
               <span className="font-bold">Rin VR Vision</span>
             </Link>
@@ -33,7 +33,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="rounded text-sm text-text-primary/80 transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+                    className="rounded-md text-sm text-text-primary/80 transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
                   >
                     {item.label}
                   </Link>

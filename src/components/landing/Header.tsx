@@ -28,7 +28,7 @@ export function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 rounded text-text-primary transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+          className="flex items-center gap-2 rounded-md text-text-primary transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
           onClick={() => setOpen(false)}
         >
           <Logo size={28} className="text-accent-primary" />
