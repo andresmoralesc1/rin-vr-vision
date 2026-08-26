@@ -7,6 +7,6 @@ describe('GestureHints', () => {
     const { getByText } = render(<GestureHints />);
     expect(getByText(/arrastrá/)).toBeInTheDocument();
     expect(getByText(/pellizcá/)).toBeInTheDocument();
-    expect(getByText(/gir/)).toBeInTheDocument();
+    expect(getByText('girá')).toBeInTheDocument();
   });
 });

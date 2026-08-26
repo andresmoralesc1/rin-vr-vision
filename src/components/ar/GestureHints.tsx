@@ -25,7 +25,7 @@ export function GestureHints() {
           <path d="M3 12a9 9 0 1 0 9-9" />
           <polyline points="3 5 3 12 10 12" />
         </svg>
-        gir
+        girá
       </span>
     </div>
   );
