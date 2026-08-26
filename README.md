@@ -75,7 +75,7 @@ Known limitations:
 ```bash
 pnpm install
 pnpm dev                   # http://localhost:3000
-pnpm test                  # 44 tests
+pnpm test                  # 64 tests
 pnpm typecheck && pnpm lint
 ```
 
