@@ -1,6 +1,13 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { Manrope } from 'next/font/google';
 import '../styles/globals.css';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-manrope',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -17,8 +24,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
-      <body className="min-h-screen bg-bg-primary text-text-primary antialiased">
+    <html lang="es" className={manrope.variable}>
+      <body className="min-h-screen bg-bg-primary font-sans text-text-primary antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg"

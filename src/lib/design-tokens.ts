@@ -5,7 +5,11 @@ export const tokens = {
     accent: { primary: '#3B82F6', success: '#22C55E', warning: '#F59E0B', danger: '#EF4444' },
     finish: { chrome: '#E5E7EB', matteBlack: '#1F2937', silver: '#CBD5E1' },
   },
-  fonts: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+  // Manrope is loaded via next/font in app/layout.tsx and exposed as
+// the CSS variable --font-manrope. Tailwind maps `font-sans` to that
+// variable (see tailwind.config.ts), so component-level typography
+// stays a single class.
+fonts: { sans: 'Manrope (next/font)' },
   radius: { sm: '0.375rem', md: '0.5rem', lg: '1rem' },
 } as const;
 export type Tokens = typeof tokens;

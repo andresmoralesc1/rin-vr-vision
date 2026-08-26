@@ -15,7 +15,7 @@ const config: Config = {
         'accent-warning': tokens.colors.accent.warning,
         'accent-danger': tokens.colors.accent.danger,
       },
-      fontFamily: { sans: tokens.fonts.sans as unknown as string[] },
+      fontFamily: { sans: ['var(--font-manrope)', 'system-ui', 'sans-serif'] },
       borderRadius: tokens.radius,
     },
   },
