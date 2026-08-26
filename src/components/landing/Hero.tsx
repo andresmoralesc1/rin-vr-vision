@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 import type { PexelsPhoto } from '@/lib/pexels/types';
 
 export function Hero({ backdrop }: { backdrop?: PexelsPhoto }) {
@@ -34,10 +34,7 @@ export function Hero({ backdrop }: { backdrop?: PexelsPhoto }) {
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href="/app"
-            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-accent-primary px-7 py-4 text-base font-semibold text-white shadow-lg shadow-accent-primary/30 transition-all duration-200 hover:scale-[1.03] hover:bg-accent-primary hover:shadow-xl hover:shadow-accent-primary/40 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
-          >
+          <Button href="/app" size="hero" className="group relative overflow-hidden transition-all duration-200">
             <span className="relative">Probar AR</span>
             <svg
               className="relative transition-transform duration-200 group-hover:translate-x-1"
@@ -56,14 +53,11 @@ export function Hero({ backdrop }: { backdrop?: PexelsPhoto }) {
             </svg>
             {/* Subtle shine sweep on hover */}
             <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-white/15 opacity-0 transition-all duration-700 group-hover:left-[150%] group-hover:opacity-100" />
-          </Link>
+          </Button>
 
-          <Link
-            href="/nosotros"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-text-primary backdrop-blur transition-all hover:border-white/20 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text-primary"
-          >
+          <Button href="/nosotros" variant="secondary" size="hero">
             Cómo funciona
-          </Link>
+          </Button>
         </div>
 
         {/* Trust line */}

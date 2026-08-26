@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Button } from '@/components/ui/Button';
 import { Logo } from '@/components/ui/Logo';
 
 const NAV = [
@@ -54,12 +55,9 @@ export function Header() {
         </ul>
 
         {/* Desktop CTA */}
-        <Link
-          href="/app"
-          className="hidden rounded-md bg-accent-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-primary hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary md:inline-block"
-        >
+        <Button href="/app" className="hidden px-4 md:inline-block">
           Probar AR
-        </Link>
+        </Button>
 
         {/* Mobile toggle */}
         <button
@@ -121,13 +119,13 @@ export function Header() {
               </li>
             ))}
             <li className="pt-2">
-              <Link
+              <Button
                 href="/app"
                 onClick={() => setOpen(false)}
-                className="block rounded-md bg-accent-primary px-4 py-3 text-center text-base font-semibold text-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+                className="block w-full px-4 py-3 text-base"
               >
                 Probar AR
-              </Link>
+              </Button>
             </li>
           </ul>
         </div>

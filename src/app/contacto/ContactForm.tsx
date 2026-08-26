@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Button } from '@/components/ui/Button';
 
 type FormState = { name: string; email: string; message: string };
 
@@ -72,16 +73,13 @@ export function ContactForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="inline-flex items-center gap-2 rounded-md bg-accent-primary px-5 py-2.5 font-semibold text-white shadow-sm transition-all hover:bg-accent-primary hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
-      >
+      <Button type="submit">
         Enviar mensaje
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <line x1="22" y1="2" x2="11" y2="13" />
           <polygon points="22 2 15 22 11 13 2 9 22 2" />
         </svg>
-      </button>
+      </Button>
     </form>
   );
 }
